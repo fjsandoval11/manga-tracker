@@ -1,0 +1,36 @@
+.registerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.regForm {
+    
+    display: row;
+    height: 300px;
+    width: 300px;
+    background-color: #246EB9;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: #FDFFFC;
+    font-size: 20px;
+}
+
+.labelUser{
+    display: block;
+  margin-top: 45px;
+  
+}
+
+.labelPass{
+    display: block;
+    margin-top: 50px;
+}
+
+.button{
+    margin-top: 15px;
+    width: 70px;
+    font-size: 15px;
+}
+
