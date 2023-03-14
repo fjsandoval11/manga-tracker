@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
+import '../Style/LogIn.css'
 
 
 const LogIn = () => {
@@ -13,7 +14,7 @@ const LogIn = () => {
     }
 
   return (
-    <div>
+    <div className='logContainer'>
          <form className='logForm'>
             <label className='labelUser'>Username</label>
             <br />
@@ -25,11 +26,14 @@ const LogIn = () => {
 
             <br />
             <button className='button' onClick={submit}>Log In</button>
+            <br />
+       
+            <Link  to='/register'> 
+                <button> Register now</button>
+            </Link>
+
         </form>
 
-        <Link to='/register'> 
-            <button> Register now</button>
-        </Link>
 
     </div>
   )

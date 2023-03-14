@@ -25,10 +25,14 @@ const Register = () => {
 
             <br />
             <button className='button' onClick={submit}>Register</button>
-        </form>
-        <Link to='/login'> 
+            
+            <br />
+
+
+        <Link  to='/login'> 
             <button> Already have an account? Sign in</button>
         </Link>
+        </form>
     </div>
   )
 }
