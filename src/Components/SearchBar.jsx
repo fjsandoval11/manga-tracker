@@ -1,19 +1,45 @@
 import React, {useState} from 'react'
+import axios from 'axios'
+import AnimeCard from './AnimeCard'
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
     const [search, setSearch] = useState('')
+    const [animeList, setAnimeList] = useState([])
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        console.log(search)
+        
+        axios.get(`https://api.jikan.moe/v4/anime?q=${search}&sfw&limit=10`).then((res) => {
+            console.log(res.data.data)
+            setAnimeList(res.data.data)
+        }).catch(error => {
+            console.log(error)
+        })
+        
+    } 
 
   return (
     <div className='searchBarContainer'>
         <div className='searchAnime'>
-            <h2>Search your Anime</h2>
-            <input>
-            
-            </input>
+            <form onSubmit={submitHandler}>
+            <input type='search' placeholder='Search your anime' onChange={e => {
+                setSearch(e.target.value)
+            }}/>
+            <button  type='submit' >Search</button>
+            </form>
+
+            <div className='animeListContainer'> {animeList.map(anime => (
+            <AnimeCard 
+            anime={anime}
+            key={anime.mal_id}
+            />
+        ))}
+         </div>
 
         </div>
-
+      
     </div>
   )
 }
