@@ -1,8 +1,9 @@
 import React from 'react'
+import '../Style/AnimeCard.css'
 
 const AnimeCard = (props) => {
   return (
-    <div anime-card>
+    <div className='anime-card'>
       <a 
       href={props.anime.url}
       target='_blank'

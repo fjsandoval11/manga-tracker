@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import AnimeCard from './AnimeCard'
+import '../Style/SearchBar.css'
 
-const SearchBar = (props) => {
+const SearchBar = () => {
 
     const [search, setSearch] = useState('')
     const [animeList, setAnimeList] = useState([])
