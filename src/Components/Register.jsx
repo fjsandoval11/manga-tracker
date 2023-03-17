@@ -1,19 +1,37 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import '../Style/Register.css'
+import {onAuthStateChanged, createUserWithEmailAndPassword, signOut} from 'firebase/auth'
+import {auth} from '../firebase-config'
 
 const Register = () => {
 
     const [usernameReg, setUsernameReg] = useState(' ')
     const [passwordReg, setPasswordReg] = useState(' ')
 
-    const submit = (e) => {
-        e.preventDefault()
-        console.log(usernameReg, passwordReg)
+    const [user, setUser] = useState({});
+
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser)
+      });
+
+    const register = async (e) => {
+         try{
+            e.preventDefault();
+            const user =  await createUserWithEmailAndPassword(auth, usernameReg, passwordReg)
+            console.log(user)
+        } catch (error) {
+            console.log(error.message)
+        }
     }
-    
+
+    const logOut = async () => {
+        await signOut(auth);
+      }
+
   return (
     <div className='registerContainer'>
+        <h2>Register</h2>
         <form className='regForm'>
             <label className='labelUser'>Username</label>
             <br />
@@ -24,7 +42,7 @@ const Register = () => {
             <input className='inputs' type='password' onChange={(e)=>{setPasswordReg(e.target.value)}}></input>           
 
             <br />
-            <button className='button' onClick={submit}>Register</button>
+            <button className='button' onClick={register}>Register</button>
             
             <br />
 
@@ -33,6 +51,12 @@ const Register = () => {
             <button> Already have an account? Sign in</button>
         </Link>
         </form>
+
+        <h4>User Logged in:</h4>
+        {user?user.email : 'not logged in'}
+
+    <button onClick={logOut}> Log Out</button>
+
     </div>
   )
 }
