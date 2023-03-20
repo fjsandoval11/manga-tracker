@@ -18,7 +18,7 @@ const LogIn = () => {
     });
 
 }, [])
-  
+
   const login = async (e) => {
     try{
       e.preventDefault();
@@ -53,7 +53,7 @@ const LogIn = () => {
             <br />
        
             <Link  to='/register'> 
-                <button> Don't have an account? Register now</button>
+                <button className='routeButton'> Don't have an account? Register now</button>
             </Link>
 
         </form>

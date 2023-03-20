@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import '../Style/Register.css'
 import {onAuthStateChanged, createUserWithEmailAndPassword, signOut} from 'firebase/auth'
@@ -11,9 +11,12 @@ const Register = () => {
 
     const [user, setUser] = useState({});
 
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser)
-      });
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    
+    }, [])
 
     const register = async (e) => {
          try{

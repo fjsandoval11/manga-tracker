@@ -19,17 +19,26 @@
   
   .labelUser{
       display: block;
-    margin-top: 45px;
+    margin-top: 30px;
+    font-size: 30px;
     
   }
   
   .labelPass{
       display: block;
-      margin-top: 50px;
+      margin-top: 30px;
+      font-size: 30px
   }
   
   .button{
       margin-top: 15px;
       width: 70px;
       font-size: 15px;
+      border-radius: 10px;
+  }
+
+  .routeButton {
+    margin-top: 10px;
+    font-size: 15px;
+    border-radius: 15px;
   }
